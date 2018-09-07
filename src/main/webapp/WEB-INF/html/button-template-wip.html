@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <style>
+            #cart-button {
+                border: 1px solid #DDD;
+                padding: 15px;
+                border-radius: 30px;
+                width: 165px;
+                box-shadow: 1px 1px #EEE;
+                transition: 0.3s;
+                color: orange;
+            }
+
+            #cart-button:hover {
+                cursor: pointer;
+                background-color: #F9F9F9;
+                transition: 0.3s;
+            }
+
+            #button-text {
+                color: orange;
+            }
+
+            #articles-quantity {
+                background-color: orange;
+                color: white;
+                font-weight: bold;
+                border-radius: 50px;
+                position: absolute;
+                top: 8px;
+                left: 27px;
+            }
+
+            #button-text {
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="cart-button">
+            <i class="fas fa-shopping-cart" style="color: orange" id="cart-icon"></i>
+            <span class="badge" id="articles-quantity">0</span>
+            <span id="button-text">Votre panier</span>
+        </div>
+    </body>
+</html>
