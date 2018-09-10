@@ -11,7 +11,29 @@ function Cart(wsLink, color){
 	this.wsLink = wsLink;
 	
 	this.addArticle = function(reference, nom, lien, prixUnite, quantite) {
-		// TODO
+		const req = new XMLHttpRequest();
+
+		req.onreadystatechange = function(event) {
+			// XMLHttpRequest.DONE === 4
+			if (this.readyState === XMLHttpRequest.DONE) {
+				if (this.status === 200) {
+					console.log("Réponse reçue: %s", this.responseText);
+				} else {
+					console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+				}
+			}
+		};
+
+		req.open('POST', this.wsLink + "CloudCart/panier", true);
+		
+		var body = new Object()
+		body.reference = reference
+		body.nom = nom;
+		body.lien = lien
+		body.prixUnite = prixUnite
+		
+		req.setRequestHeader("Content-Type", "application/json");
+		req.send(JSON.stringify(body));
 	}
 	
 	this.removeArticle = function(reference) {
