@@ -1,5 +1,7 @@
 package fr.cloudteam.cloudcart.rest;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -25,7 +27,7 @@ public class AddArticle {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public String addArticle(Article a) {
+	public Map<Article, Integer> addArticle(Article a) {
 		PanierBean panierBean = (PanierBean)request.getSession().getAttribute(PANIER_SESSION_BEAN);
 		
 		
@@ -37,6 +39,6 @@ public class AddArticle {
 		
 		panierBean.addArticle(a);
 		
-		return "{\"code\": 200, \"response\": \"ok\" }x";
+		return panierBean.getArticles();
 	}
 }

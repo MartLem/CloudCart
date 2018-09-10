@@ -24,10 +24,14 @@ public class PanierBean {
 	 * @param quantite La quantité à ajouter
 	 */
 	public void addMultipleArticles(Article a, int quantite) {
-		if(this.articles.containsKey(a)) {
+		if(this.articles.keySet().contains(a)) {
 			this.articles.put(a, this.articles.get(a)+quantite);
 		}
 		else {
+			System.out.println("PUT");
+			for(Article key : this.articles.keySet()) {
+				System.out.println(key);
+			}
 			this.articles.put(a, quantite);
 		}
 	}

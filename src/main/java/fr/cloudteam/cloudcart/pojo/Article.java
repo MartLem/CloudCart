@@ -53,14 +53,22 @@ public class Article {
 	}
 	
 	@Override
+	public int hashCode() {
+		return this.reference.hashCode();
+	}
+	
+	@Override
 	public boolean equals(Object o) {
-		
 		if(o instanceof Article) {
 			Article a = (Article) o;
-			
 			return this.reference.equals(a.getReference());
 		}
 		return false;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("[%s] %s", this.reference, this.nom);
 	}
 	
 	
