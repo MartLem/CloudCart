@@ -28,10 +28,6 @@ public class PanierBean {
 			this.articles.put(a, this.articles.get(a)+quantite);
 		}
 		else {
-			System.out.println("PUT");
-			for(Article key : this.articles.keySet()) {
-				System.out.println(key);
-			}
 			this.articles.put(a, quantite);
 		}
 	}
