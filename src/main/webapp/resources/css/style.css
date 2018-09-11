@@ -58,3 +58,54 @@ div#cart {
   right: 15px;
   bottom: 150px;
 }
+
+table {
+  border-collapse: collapse;
+  
+}
+
+table, tr, td, th {
+  margin: 0px;
+  padding: 15px;
+  border: 1px solid grey;
+}
+
+table tr:nth-child(odd) td{
+  background-color: #eee;
+}
+
+table tr:last-child td {
+  background-color: #FFFACD;
+  border-top-width: 10px;
+  border-top-color: black;
+}
+
+td.quantityTable * {
+  width: 25px;
+  height: 25px;
+  
+}
+
+th {
+  background-color: #4f4f4f;
+  color: white;
+}
+
+td.quantityTable button:nth-of-type(1) {
+  border-radius: 10px 0px 0px 10px;
+}
+
+td.quantityTable button:nth-of-type(2) {
+  border-radius: 0px 10px 10px 0px;
+}
+
+td.quantityTable button:hover {
+  cursor: pointer;
+}
+
+td.quantityTable button {
+  color: white;
+  border: none;
+  background-color: #4f4f4f;
+
+}

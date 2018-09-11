@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Cart</title>
+    <link rel="stylesheet" href="resources/css/style.css" />
 </head>
 <body>
     <h1>Cart</h1>
@@ -27,8 +28,8 @@
                 <td>
                 	${article.prixUnite}
                 </td>
-                <td>
-                	${quantity}
+                <td class="quantityTable">
+	                <button class="plus">+</button><input  class="quantity" type="text" value="${quantity}" /><button class="minus">-</button>
                 </td>
                 <td>
                 	${ quantity * article.prixUnite }
