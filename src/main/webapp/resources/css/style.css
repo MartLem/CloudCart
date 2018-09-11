@@ -1,0 +1,60 @@
+div#catalogue .product img.preview {
+  width: 200px;
+  height: 200px;
+}
+
+div#catalogue {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+
+div#catalogue .product {
+  border-bottom: 1px solid lightgrey;
+  border-width: 1px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+div#catalogue .product {
+  display: flex;
+  flex-direction: row;
+}
+
+button.addToCart {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 200px;
+  height: 50px;
+  color: white;
+}
+
+header {
+  display: flex;
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 15px;
+  color: white;
+  justify-content: space-between;
+  align-self: center;
+}
+
+header #headerLeft img{
+  width: 100px;
+}
+
+header #headerRight {
+  display: flex;
+  align-self: center;
+}
+
+div#cart {
+  position: fixed;
+  right: 15px;
+  bottom: 150px;
+}
