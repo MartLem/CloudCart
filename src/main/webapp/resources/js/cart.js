@@ -15,18 +15,50 @@ function Cart(wsLink, color){
 	}
 	
 	this.wsLink = wsLink;
+	this.animation = null
+	
+	/**
+	 * Update the number of articles in the cart
+	 */
+	this.updateArticlesNumber = function(animated){
+		if(animated === undefined){
+			animated = true
+		}
+		
+		var panier = sessionStorage.getItem("panier");
+		var articlesQuantity = document.getElementById("articles-quantity");
+		
+		if(panier === null) {
+			sessionStorage.setItem("panier", 0)
+		}
+
+		articlesQuantity.innerText = sessionStorage.getItem("panier");
+		
+		if(animated) {
+			articlesQuantity.className = "badge articleAdded";
+			
+			if(this.animation != null) {
+				clearTimeout(this.animation)
+			}
+			
+			this.animation = setTimeout(function() { articlesQuantity.className = "badge"}, 250);
+		}
+	}
 	
 	/**
 	 * Add an article to the cart and update the button 
 	 */
 	this.addArticle = function(reference, nom, lien, prixUnite, quantite) {
 		const req = new XMLHttpRequest();
-
+		var instance = this
+		
 		req.onreadystatechange = function(event) {
 			// XMLHttpRequest.DONE === 4
 			if (this.readyState === XMLHttpRequest.DONE) {
 				if (this.status === 200) {
-					console.log("Réponse reçue: %s", this.responseText);
+					var response = JSON.parse(this.response);
+					sessionStorage.setItem("panier", response.articles)
+					instance.updateArticlesNumber()
 				} else {
 					console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
 				}
@@ -98,6 +130,11 @@ function Cart(wsLink, color){
                 position: absolute;
                 top: 8px;
                 left: 27px;
+				transition: 0.2s;
+            }
+            
+            #articles-quantity.articleAdded{
+            	font-size: 13pt;
             }
 
             #button-text {
@@ -123,7 +160,6 @@ function Cart(wsLink, color){
 	 */
 	this.initialization = function(){
 		this.initializeStyle();
-		
 		// CREATION OF THE DOM TREE
 		var cartDom = document.getElementById("cart");
 		var cartButton = document.createElement("div");
@@ -149,18 +185,20 @@ function Cart(wsLink, color){
 		
 		// EVENTS
 		cartButton.addEventListener("click", function(){
-			alert()
-		})
+			document.location.href = this.wsLink+"CloudCart/cart"
+		}.bind(this))
 			
 		// BUTTON DISPLAY
 		cartDom.appendChild(cartButton);
-	}.bind(this)
+		
+		this.updateArticlesNumber(false);
+	}
 	
 	
 	
 	/**
 	 * We load the module
 	 */
-	window.addEventListener("load", this.initialization);
+	window.addEventListener("load", this.initialization.bind(this));
 	
 }

@@ -1,5 +1,6 @@
 package fr.cloudteam.cloudcart.rest;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class AddArticle {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Map<Article, Integer> addArticle(Article a) {
+	public Map<String, Integer> addArticle(Article a) {
 		PanierBean panierBean = (PanierBean)request.getSession().getAttribute(CART_URL);
 		
 		
@@ -39,6 +40,9 @@ public class AddArticle {
 		
 		panierBean.addArticle(a);
 		
-		return panierBean.getArticles();
+		Map<String, Integer> response = new HashMap<>();
+
+		response.put("articles", panierBean.getArticles().values().stream().mapToInt(Integer::intValue).sum());
+		return response;
 	}
 }
