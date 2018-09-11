@@ -55,13 +55,13 @@ function Cart(wsLink, color){
 	this.initializeStyle = function() {
 		
 		var bootstrap = document.createElement("link");
-		var fontwesome = document.createElement("link");
+		var fontawesome = document.createElement("link");
 		
 		bootstrap.rel = "stylesheet";
 		fontawesome.rel = "stylesheet";
 		
 		bootstrap.href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		fontwesome.href = "https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		fontawesome.href = "https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 			
 		
 		document.querySelector("head").appendChild(fontawesome);
@@ -74,7 +74,7 @@ function Cart(wsLink, color){
                 border: 1px solid #DDD;
                 padding: 15px;
                 border-radius: 30px;
-                width: 165px;
+                display: inline-block;
                 box-shadow: 1px 1px #EEE;
                 transition: 0.3s;
                 color: orange;
@@ -143,7 +143,7 @@ function Cart(wsLink, color){
 		cartButton.appendChild(articlesQuantity);		
 		
 		buttonText.id = "button-text";
-		buttonText.innerText = "Votre panier";
+		//buttonText.innerText = "Votre panier";
 		
 		cartButton.appendChild(buttonText);
 		

@@ -17,7 +17,7 @@ public class AddArticle {
 	
 	@Context private HttpServletRequest request;
 
-	private static final String PANIER_SESSION_BEAN = "panier"; 
+	public static final String CART_URL = "panier";
 	
 	/**
 	 * Ajoute un article au panier du client
@@ -28,13 +28,13 @@ public class AddArticle {
 	@Produces("application/json")
 	@Consumes("application/json")
 	public Map<Article, Integer> addArticle(Article a) {
-		PanierBean panierBean = (PanierBean)request.getSession().getAttribute(PANIER_SESSION_BEAN);
+		PanierBean panierBean = (PanierBean)request.getSession().getAttribute(CART_URL);
 		
 		
 		if(panierBean == null) {
 			panierBean = new PanierBean();
 			panierBean.setCookieClient(request.getSession().getId());
-			request.getSession().setAttribute(PANIER_SESSION_BEAN, panierBean);
+			request.getSession().setAttribute(CART_URL, panierBean);
 		}
 		
 		panierBean.addArticle(a);

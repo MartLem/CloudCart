@@ -13,7 +13,7 @@ public class Article {
 		
 	}
 	
-	public Article(String reference, String nom, String lien, int quantite, double prixUnite) {
+	public Article(String reference, String nom, String lien, double prixUnite) {
 		this.reference = reference;
 		this.nom = nom;
 		this.lien = lien;

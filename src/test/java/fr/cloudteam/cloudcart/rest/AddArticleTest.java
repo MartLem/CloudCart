@@ -20,8 +20,8 @@ public class AddArticleTest {
 	 */
 	@Test
 	public void addAndRemoveArticleTest() {
-		Article a1 = new Article("000", "nom", "lien", 1, 3.0);
-		Article a2 = new Article("005", "nom", "lien", 1, 3.0);
+		Article a1 = new Article("000", "nom", "lien", 3.0);
+		Article a2 = new Article("005", "nom", "lien", 3.0);
 		
 		panierBean.addArticle(a1);
 		panierBean.addArticle(a2);
