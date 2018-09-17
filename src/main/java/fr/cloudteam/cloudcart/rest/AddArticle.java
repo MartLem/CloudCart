@@ -13,12 +13,13 @@ import javax.ws.rs.core.Context;
 import fr.cloudteam.cloudcart.bean.PanierBean;
 import fr.cloudteam.cloudcart.pojo.Article;
 
-@Path("panier")
+@Path("/panier")
 public class AddArticle {
 	
 	@Context private HttpServletRequest request;
 
-	public static final String CART_URL = "panier";
+	public static final String CART_URL = "/panier";
+	public static final String CART = "panier";
 	
 	/**
 	 * Ajoute un article au panier du client
@@ -26,16 +27,16 @@ public class AddArticle {
 	 * @return L'état du panier actuel
 	 */
 	@POST
-	@Produces("application/json")
 	@Consumes("application/json")
+	@Produces("application/json")
 	public Map<String, Integer> addArticle(Article a) {
-		PanierBean panierBean = (PanierBean)request.getSession().getAttribute(CART_URL);
-		
-		
+		PanierBean panierBean = (PanierBean)request.getSession().getAttribute(CART);
+
+
 		if(panierBean == null) {
 			panierBean = new PanierBean();
 			panierBean.setCookieClient(request.getSession().getId());
-			request.getSession().setAttribute(CART_URL, panierBean);
+			request.getSession().setAttribute(CART, panierBean);
 		}
 		
 		panierBean.addArticle(a);
