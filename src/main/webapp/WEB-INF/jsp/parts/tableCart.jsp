@@ -4,6 +4,7 @@
         <th>Price</th>
         <th>Quantity</th>
         <th>Total</th>
+        <th></th>
     </tr>
 
     <c:set var="totalPrice" value="${0}"/>
@@ -18,16 +19,19 @@
             <td>
                 <a href="${article.lien}">${article.nom}</a>
             </td>
-            <td>
-                    ${article.prixUnite}
-            </td>
+            <td class="prixUnite">
+                    ${article.prixUnite}&euro;
+            </td> 
             <td class="quantityTable">
-                <button class="plus">+</button>
+                <button class="plus" >+</button>
                 <input class="quantity" type="text" value="${quantity}"/>
                 <button class="minus">-</button>
             </td>
+            <td class="totalPriceArticle">
+                    ${ quantity * article.prixUnite }&euro;
+            </td>
             <td>
-                    ${ quantity * article.prixUnite }
+            	<a href="/CloudCart/delete?ref=${ article.reference }"><i style="color: black" class="fas fa-trash-alt"></i></a>
             </td>
         </tr>
 
@@ -35,7 +39,8 @@
     <tr>
         <td>Total</td>
         <td></td>
-        <td>${ pageScope.totalArticle }</td>
-        <td>${ pageScope.totalPrice }</td>
+        <td id="numberOfArticles"></td>
+        <td id="totalPrice"></td>
+        <td></td>
     </tr>
 </table>

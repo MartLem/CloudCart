@@ -18,12 +18,11 @@ public class CatalogueController extends AbstractController {
   protected void doPost(HttpServletRequest request,
       HttpServletResponse response)
       throws ServletException, IOException {
-
     Article article = new Article( request.getParameter("reference"), request.getParameter("name"), request.getParameter("link"), Double.parseDouble(request.getParameter("price")));
 
     PanierBean panierBean = getOrCreatePanierFromSession(request);
     panierBean.addArticle(article);
-
+    request.setCharacterEncoding("UTF-8");
     doRedirect(request, response, CATALOGUE_VIEW);
   }
 
