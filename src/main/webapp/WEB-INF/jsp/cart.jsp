@@ -2,20 +2,16 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html>
-<head>
-    <title>Cart</title>
-    <link rel="stylesheet" href="resources/css/style.css" />
-    <script src="resources/js/cartPrice.js" ></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
-</head>
-<body>
-    <h1>Cart</h1>
+<%@ include file="parts/header.jsp" %>
 
-    <c:if test="${emptyCart}">
-        <p><strong style="color: red;"> Votre panier est vide</strong></p>
-    </c:if>
+<h1>Cart</h1>
 
-    <%@ include file="parts/tableCart.jsp" %>
-</body>
-</html>
+<c:if test="${emptyCart}">
+    <p><strong style="color: red;"> Votre panier est vide</strong></p>
+</c:if>
+
+<%@ include file="parts/tableCart.jsp" %>
+
+<a href="/CloudCart/payment">Confirmer</a>
+
+<%@ include file="parts/footer.jsp" %>

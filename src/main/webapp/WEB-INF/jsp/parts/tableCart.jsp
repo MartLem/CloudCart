@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <table>
     <tr>
         <th>Article</th>
@@ -21,17 +23,25 @@
             </td>
             <td class="prixUnite">
                     ${article.prixUnite}&euro;
-            </td> 
+            </td>
             <td class="quantityTable">
-                <button class="plus" >+</button>
-                <input class="quantity" type="text" value="${quantity}"/>
-                <button class="minus">-</button>
+                <c:choose>
+                    <c:when test="${!isPayment}">
+                        <button class="plus">+</button>
+                        <input class="quantity" type="text" value="${quantity}"/>
+                        <button class="minus">-</button>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="quantity">${quantity}</span>
+                    </c:otherwise>
+                </c:choose>
             </td>
             <td class="totalPriceArticle">
                     ${ quantity * article.prixUnite }&euro;
             </td>
             <td>
-            	<a href="/CloudCart/delete?ref=${ article.reference }"><i style="color: black" class="fas fa-trash-alt"></i></a>
+                <a href="/CloudCart/delete?ref=${ article.reference }"><i style="color: black"
+                                                                          class="fas fa-trash-alt"></i></a>
             </td>
         </tr>
 
